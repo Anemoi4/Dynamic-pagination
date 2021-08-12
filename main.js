@@ -20,6 +20,7 @@ let pageHistory = []
 
 function displayButtons(items, wrapper, page, start, bLeftArrow = false) {
     // store history of pages for later
+    console.log(page)
     if (bLeftArrow){
         
     } else {
@@ -46,6 +47,7 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false) {
     // Make sure counter starts at the right number
     let index = buttonCountHistory.length - 1
     counter = buttonCountHistory[index]
+    console.log(counter)
 
     paginatedItems.some(element => {
         // Keep track how many buttons we added for later
@@ -62,7 +64,7 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false) {
         buttonCountHistory.push(counter)
     }
 
-
+    console.log(buttonCountHistory)
 
     if (checkOverflow(wrapper)) {
         wrapper.appendChild(paginationArroRight)
@@ -89,19 +91,7 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false) {
         pageHistory.pop()
         // Make sure the counter starts at the right place (MAKE SURE TO KEEP STARTING CONDITION THE SAME COUNTER NEVER 0)
         buttonCountHistory.pop()
-        let index = 0;
-        switch(page) {
-            case 1:
-                break;
-            case 2:
-                index = 1
-                break;
-            case 3:
-                index = 2
-                break;
-            default:
-                break;
-        }
+        let index = page - 1
 
         let bLeftArrow = true
         displayButtons(items, wrapper, page, buttonCountHistory[index], bLeftArrow)
