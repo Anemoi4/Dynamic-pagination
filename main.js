@@ -18,13 +18,31 @@ paginationArrowLeft.dataset.listener = 'false'
 paginationArroRight.dataset.listener = 'false'
 let pageHistory = []
 
-function displayButtons(items, wrapper, page, start, bLeftArrow = false) {
+function displayButtons(items, wrapper, page, start, bLeftArrow = false, bReset = false) {
+    console.log('--------------------------------------------------------------------------------')
+    // Keep track of the maxium buttons for late
+    let buttonCount = items.length
+    let bLastButton = false
+
+    // If user resizes their browser make sure to start from starting values
+    if (bReset) {
+        page = 1
+        start = 0
+        buttonCountHistory = [0]
+        pageHistory = []
+        currentPage = 1
+        counter = 0
+    }
+    console.log(page)
+
     // store history of pages for later
     if (bLeftArrow){
         
     } else {
         pageHistory.push(page)
     }
+
+    console.log(pageHistory)
     // Empty the wrapper
     wrapper.innerHTML = ""
 
@@ -47,6 +65,8 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false) {
     let index = buttonCountHistory.length - 1
     counter = buttonCountHistory[index]
 
+    console.log(counter)
+
     paginatedItems.some(element => {
         // Keep track how many buttons we added for later
         if (!bLeftArrow)
@@ -56,15 +76,23 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false) {
         return checkOverflow(wrapper)
     })
 
+    // Check if last button has been rendered
+    if (counter == buttonCount) {
+       bLastButton = true
+    }
+
     if(bLeftArrow) {
         // Do nothing
     } else {
         buttonCountHistory.push(counter)
     }
-
+    console.log(buttonCountHistory)
 
     if (checkOverflow(wrapper)) {
-        wrapper.appendChild(paginationArroRight)
+        // If the last button is shown don't show right arrow anymore
+        if (!bLastButton) {
+            wrapper.appendChild(paginationArroRight)
+        }
         // Add EL to paginaitonArrow
         if (paginationArroRight.dataset.listener === 'false') {
             // Make sure not to stack Event Listeners
@@ -111,5 +139,7 @@ function checkOverflow(element) {
 window.addEventListener('resize', resetDisplay)
 
 function resetDisplay(e) {
-    displayButtons(intrestButtonsArray, intrestButtonsWrapper, currentPage, 0) 
+    displayButtons(intrestButtonsArray, intrestButtonsWrapper, currentPage, 0, false, true) 
+    console.log('I got called')
 }
+
