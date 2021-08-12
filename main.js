@@ -19,7 +19,6 @@ paginationArroRight.dataset.listener = 'false'
 let pageHistory = []
 
 function displayButtons(items, wrapper, page, start, bLeftArrow = false, bReset = false) {
-    console.log('--------------------------------------------------------------------------------')
     // Keep track of the maxium buttons for late
     let buttonCount = items.length
     let bLastButton = false
@@ -33,7 +32,6 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false, bReset 
         currentPage = 1
         counter = 0
     }
-    console.log(page)
 
     // store history of pages for later
     if (bLeftArrow){
@@ -42,7 +40,6 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false, bReset 
         pageHistory.push(page)
     }
 
-    console.log(pageHistory)
     // Empty the wrapper
     wrapper.innerHTML = ""
 
@@ -65,7 +62,6 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false, bReset 
     let index = buttonCountHistory.length - 1
     counter = buttonCountHistory[index]
 
-    console.log(counter)
 
     paginatedItems.some(element => {
         // Keep track how many buttons we added for later
@@ -86,7 +82,6 @@ function displayButtons(items, wrapper, page, start, bLeftArrow = false, bReset 
     } else {
         buttonCountHistory.push(counter)
     }
-    console.log(buttonCountHistory)
 
     if (checkOverflow(wrapper)) {
         // If the last button is shown don't show right arrow anymore
@@ -140,6 +135,5 @@ window.addEventListener('resize', resetDisplay)
 
 function resetDisplay(e) {
     displayButtons(intrestButtonsArray, intrestButtonsWrapper, currentPage, 0, false, true) 
-    console.log('I got called')
 }
 
