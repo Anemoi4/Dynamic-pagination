@@ -106,3 +106,10 @@ function checkOverflow(element) {
     const bOverflow = element.clientWidth < element.scrollWidth
     return bOverflow
 }
+
+// Check if user changes the screen size
+window.addEventListener('resize', resetDisplay)
+
+function resetDisplay(e) {
+    displayButtons(intrestButtonsArray, intrestButtonsWrapper, currentPage, 0) 
+}
