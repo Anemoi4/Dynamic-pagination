@@ -1,0 +1,92 @@
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body {
+	background: #F3F3F3;
+    position: relative;
+    min-height: 200vh;
+}
+
+.intrest-buttons {
+	position: relative;
+}
+
+ /* Intrest buttons */
+ .intrest-buttons .container{
+    position: absolute;
+    left: 0;
+    height: 60px;
+    max-width: 100%;
+    background: hsl(0, 0%, 17%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid hsl(0, 0%, 40%);
+    border-bottom: 1px solid hsl(0, 0%, 40%);
+	overflow: hidden;
+}
+
+.intrest-buttons .active {
+    color: black;
+    background: hsl(0, 0%, 100%);
+}
+
+.intrest-buttons button {
+    all: initial;
+    color: inherit;
+    cursor: pointer;
+    background: hsl(0, 0%, 30%);
+    padding: .5rem .75rem;
+    border-radius: 500px;
+    font-size: 1rem;
+    margin-right: 1rem;
+    min-width: 66px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.intrest-buttons button:first-child {
+    margin-left: 1rem;
+}
+
+.intrest-buttons button:hover:not(.active) {
+    background: hsl(0, 0%, 40%);
+}
+
+.instest-btn {
+	display: none;
+}
+
+.overflow-btn-right {
+	background-color: hsl(0, 0%, 15%);
+	position: absolute;
+	display: block;
+	width: 40px;
+	height: 60px;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	opacity: 0.9;
+	cursor: pointer;
+}
+
+.overflow-btn-left {
+	background-color: hsl(0, 0%, 15%);
+	position: absolute;
+	display: block;
+	width: 40px;
+	height: 60px;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	opacity: 0.9;
+	cursor: pointer;
+}
